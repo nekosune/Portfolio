@@ -1,5 +1,7 @@
 package com.nekokittygames.portfolio;
 
+import android.content.ComponentName;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,7 +34,12 @@ public class Portfolio extends AppCompatActivity {
         movieButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Portfolio.this, "This button will launch the movie app", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent("android.intent.action.MAIN");
+                intent.setComponent(ComponentName.unflattenFromString("com.nekokittygames.movieapp/com.nekokittygames.movieapp.MainScreen"));
+                intent.addCategory("android.intent.category.LAUNCHER");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
             }
         });
         alexandriaButton.setOnClickListener(new View.OnClickListener() {
